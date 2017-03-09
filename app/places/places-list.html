@@ -1,1 +1,18 @@
 {{title}}
+
+<ul id="places-list">
+  <li *ngFor="#place of places" class="place-item">
+    <div class="image"></div>
+    <div class="data">
+      <h4>{{place.place_name}}</h4>
+      <p>{{place.place_score}}</p>
+      <p>
+        <a href="" class="btn btn-view">View</a>
+        <a href="" class="btn btn-edit">Edit</a>
+        <a href="" class="btn btn-delete">Delete</a>
+      </p>
+    </div>
+    <div class="clearfix"></div>
+  </li>
+  <div class="clearfix"></div>
+</ul>
