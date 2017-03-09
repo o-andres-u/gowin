@@ -11,32 +11,36 @@ import {PlaceService} from "./place.service";
 
 export class PlacesListComponent implements OnInit {
 
-  private title: string = "The best places:";
-  private places: Place[];
-  private error: boolean;
-  private errorMessage: string;
+  public loading: any;
+  private _title: string = "The best places:";
+  private _places: Place[];
+  private _error: boolean;
+  private _errorMessage: string;
 
   constructor(
     private placeService: PlaceService
   ) {}
 
   ngOnInit() {
+    this.loading = 'show';
     this.getPlaces();
+    this.loading = 'hide';
   }
 
   getPlaces() {
+
     this.placeService.getPlaces().subscribe(
       result => {
-        this.places = result.places;
-        this.error = result.error;
-        if (this.error) {
+        this._places = result.places;
+        this._error = result.error;
+        if (this._error) {
           alert("Error in server");
         }
       },
       error => {
-        this.errorMessage = error.message;
-        if (this.errorMessage !== null) {
-          console.log(this.errorMessage);
+        this._errorMessage = error.message;
+        if (this._errorMessage !== null) {
+          console.log(this._errorMessage);
           alert("Error in request");
         }
       }

@@ -1,7 +1,10 @@
 <h1>{{title}}</h1>
 
 <ul id="places-list">
-  <li *ngFor="#place of places" class="place-item">
+  <li class="loading">
+    <img src="../../assets/images/loader.gif" *ngIf="loading === 'show'" />
+  </li>
+  <li *ngFor="#place of _places" class="place-item">
     <div class="image"></div>
     <div class="data">
       <h4>{{place.place_name}}</h4>
