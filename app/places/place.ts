@@ -1,17 +1,17 @@
-import {Coordinate} from "./coordinate";
-
 /**
  * This class represents a place which is located on the map
  * and has a score based on users qualifications.
  */
 export class Place {
 
-  private coordinates: Coordinate;
-  private score: number;
+  private elevation: string;
 
-  constructor(coordinates: Coordinate) {
-    this.coordinates = coordinates;
-    this.score = 0;
-  }
+  constructor(
+    private uuid: string,
+    private name: string,
+    private score: number,
+    private latitude: string,
+    private longitude: string
+  ) { }
 
 }
