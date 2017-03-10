@@ -1,5 +1,6 @@
 import {Component} from "angular2/core";
 import {PlacesListComponent} from "./places/places-list.component";
+import {PlaceDetailComponent} from "./places/place-detail.component";
 import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 
 @Component({
@@ -8,8 +9,16 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
   directives: [PlacesListComponent, ROUTER_DIRECTIVES]
 })
 
-export class GowinComponent {
+@RouteConfig([
+  { path: "/", name: "Home", component: PlacesListComponent, useAsDefault: true },
+  { path: "/place/:uuid", name: "Place", component: PlaceDetailComponent }
+])
 
+/**
+  * Main component for the Gowin App.
+  */
+export class GowinComponent {
+  // Title for home.
   private title: string = "gowin - Find the best place to have fun!";
 
 }
