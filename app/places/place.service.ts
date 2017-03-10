@@ -11,8 +11,13 @@ export class PlaceService {
     private http: Http
   ) {}
 
-  getPlaces() {
+  getPlaces(): any {
     let req = this.http.get("http://localhost:4000/api/places");
+    return req.map(res => res.json());
+  }
+
+  getPlace(uuid: string): any {
+    let req = this.http.get("http://localhost:4000/api/places/" + uuid);
     return req.map(res => res.json());
   }
 

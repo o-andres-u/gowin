@@ -4,13 +4,13 @@
   <li class="loading">
     <img src="../../assets/images/loader.gif" *ngIf="loading === 'show'" />
   </li>
-  <li *ngFor="#place of _places" class="place-item">
+  <li *ngFor="#place of places" class="place-item">
     <div class="image"></div>
     <div class="data">
       <h4>{{place.place_name}}</h4>
       <p>{{place.place_score}}</p>
       <p>
-        <a href="" class="btn btn-view">View</a>
+        <a [routerLink]="['Place', {uuid: place.place_uuid}]" class="btn btn-view">View</a>
         <a href="" class="btn btn-edit">Edit</a>
         <a href="" class="btn btn-delete">Delete</a>
       </p>

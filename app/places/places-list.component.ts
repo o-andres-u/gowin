@@ -6,32 +6,36 @@ import {PlaceService} from "./place.service";
 @Component({
   selector: "places-list",
   templateUrl: "/app/places/places-list.html",
+  directives: [ROUTER_DIRECTIVES],
   providers: [PlaceService]
 })
 
+/**
+ * Component that retrieves the list of the whole places.
+ */
 export class PlacesListComponent implements OnInit {
 
-  public loading: any;
-  private _title: string = "The best places:";
-  private _places: Place[];
+  public loading: string;
+  public title: string = "The best places:";
+  public places: Place[];
   private _error: boolean;
   private _errorMessage: string;
 
   constructor(
-    private placeService: PlaceService
-  ) {}
+    private _placeService: PlaceService
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loading = 'show';
     this.getPlaces();
     this.loading = 'hide';
   }
 
-  getPlaces() {
+  getPlaces(): void {
 
-    this.placeService.getPlaces().subscribe(
+    this._placeService.getPlaces().subscribe(
       result => {
-        this._places = result.places;
+        this.places = result.places;
         this._error = result.error;
         if (this._error) {
           alert("Error in server");
