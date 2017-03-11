@@ -1,1 +1,10 @@
-<h1>Information for {{placeName}}</h1>
+<div class="place-box" *ngIf="place">
+  <h1>Place: {{place.name}} </h1>
+  <p class="score">
+    <span [ngSwitch]="place.classification">
+      <span *ngSwitchWhen="'top'">Top</span>
+      <span *ngSwitchWhen="'avarage'">About avarage</span>
+      <span *ngSwitchWhen="'low'">Low interesting</span>
+    </span>
+  </p>
+</div>

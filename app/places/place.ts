@@ -7,11 +7,12 @@ export class Place {
   private elevation: string;
 
   constructor(
-    private uuid: string,
-    private name: string,
-    private score: number,
-    private latitude: string,
-    private longitude: string
+    public uuid: string,
+    public name: string,
+    public score: number,
+    public classification: string,
+    public latitude: string,
+    public longitude: string
   ) { }
 
 }

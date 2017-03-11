@@ -1,5 +1,5 @@
 import {Component, OnInit} from "angular2/core";
-import {RouteParams} from "angular2/router";
+import {RouteParams, Router} from "angular2/router";
 import {PlaceService} from "./place.service";
 import {Place} from "./place";
 
@@ -14,14 +14,14 @@ import {Place} from "./place";
   */
 export class PlaceDetailComponent implements OnInit {
 
-  public placeName: string;
   public place: Place;
   private _error: boolean;
   private _errorMessage: string;
 
   constructor(
     private _routeParams: RouteParams,
-    private _placeService: PlaceService
+    private _placeService: PlaceService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,10 +33,21 @@ export class PlaceDetailComponent implements OnInit {
     this._placeService.getPlace(uuid).subscribe(
       response => {
         this.place = response.place;
-        this.placeName = this.place[0].place_name; // Fue necesario hacerlo así.
         this._error = response.error;
-        if(this._error) {
-          alert("Error in server");
+        if(this._error || this.place[0] === undefined) {
+          this._router.navigate(["Home"]);
+        } else { // Fue necesario hacerlo así.
+          this.place.name = this.place[0].place_name;
+          this.place.score = this.place[0].place_score;
+          if (this.place.score >= 0 && this.place.score <= 4) {
+            this.place.classification = "low";
+          } else if (this.place.score > 4 && this.place.score < 7) {
+            this.place.classification = "avarage";
+          } else {
+            this.place.classification = "top";
+          }
+          this.place.latitude = this.place[0].place_latitude;
+          this.place.longitude = this.place[0].place_longitude;
         }
       },
       error => {
