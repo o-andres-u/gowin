@@ -1,0 +1,32 @@
+<h1>Add new place</h1>
+<form #formPlace="ngForm" (hgSubmit)="onSubmit()">
+
+  <label>Name:</label>
+  <p>
+    <input type="text" #name="ngForm" ngControl="name" [(ngModel)]="place.name" required />
+    <span *ngIf="!name.valid">Name is required</span>
+  </p>
+
+  <label>Latitude:</label>
+  <p>
+    <input type="text" #latitude="ngForm" ngControl="latitude" [(ngModel)]="place.latitude" required />
+    <span *ngIf="!latitude.valid">Latitude is required</span>
+  </p>
+
+  <label>Longitude:</label>
+  <p>
+    <input type="text" #longitude="ngForm" ngControl="longitude" [(ngModel)]="place.longitude" required />
+    <span *ngIf="!longitude.valid">Longitude is required</span>
+  </p>
+
+  <label>Classification:</label>
+  <p>
+    <select #classification>
+      <option value="low">Low</option>
+      <option value="average">Average</option>
+      <option value="top">Top</option>
+    </select>
+  </p>
+
+  <input type="submit" value="Add place" [disabled]="!formPlace.form.valid"/>
+</form>
