@@ -32,4 +32,15 @@ export class PlaceService {
     return req.map(res => res.json());
   }
 
+  editPlace(uuid: string, place: Place): any {
+    let json = JSON.stringify(place);
+    let params = "json=" + json;
+    let headers = new Headers(
+      {"Content-Type": "application/x-www-form-urlencoded"}
+    );
+
+    let req = this._http.put("http://localhost:4000/api/places/" + uuid, params, {headers: headers});
+    return req.map(res => res.json());
+  }
+
 }

@@ -32,13 +32,14 @@ export class PlaceDetailComponent implements OnInit {
     let uuid = this._routeParams.get("uuid");
     this._placeService.getPlace(uuid).subscribe(
       response => {
-        this.place = response.place;
+        let array = response.place;
+        this.place = array[0];
         this._error = response.error;
-        if(this._error || this.place[0] === undefined) {
+        if(this._error || this.place === undefined) {
           this._router.navigate(["Home"]);
         } else { // Fue necesario hacerlo así.
-          this.place.name = this.place[0].place_name;
-          this.place.score = this.place[0].place_score;
+          this.place.name = array[0].place_name;
+          this.place.score = array[0].place_score;
           if (this.place.score >= 0 && this.place.score <= 4) {
             this.place.classification = "low";
           } else if (this.place.score > 4 && this.place.score < 7) {
@@ -46,8 +47,8 @@ export class PlaceDetailComponent implements OnInit {
           } else {
             this.place.classification = "top";
           }
-          this.place.latitude = this.place[0].place_latitude;
-          this.place.longitude = this.place[0].place_longitude;
+          this.place.latitude = array[0].place_latitude;
+          this.place.longitude = array[0].place_longitude;
         }
       },
       error => {
