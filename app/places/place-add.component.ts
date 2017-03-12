@@ -14,6 +14,7 @@ import {Place} from "./place";
   */
 export class AddPlaceComponent implements OnInit {
 
+  public title = "Add place";
   public place: Place;
   private _error: boolean;
   private _errorMessage: string;

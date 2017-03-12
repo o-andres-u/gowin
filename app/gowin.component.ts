@@ -2,6 +2,7 @@ import {Component} from "angular2/core";
 import {PlacesListComponent} from "./places/places-list.component";
 import {PlaceDetailComponent} from "./places/place-detail.component";
 import {AddPlaceComponent} from "./places/place-add.component";
+import {EditPlaceComponent} from "./places/place-edit.component";
 import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 
 @Component({
@@ -13,7 +14,8 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 @RouteConfig([
   { path: "/", name: "Home", component: PlacesListComponent, useAsDefault: true },
   { path: "/place/:uuid", name: "Place", component: PlaceDetailComponent },
-  { path: "/place-add/", name: "AddPlace", component: AddPlaceComponent }
+  { path: "/place-add/", name: "AddPlace", component: AddPlaceComponent },
+  { path: "/place-edit/:uuid", name: "EditPlace", component: EditPlaceComponent }
 ])
 
 /**

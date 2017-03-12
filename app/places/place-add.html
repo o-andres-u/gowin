@@ -1,4 +1,4 @@
-<h1>Add new place</h1>
+<h1>{{title}}</h1>
 <form #formPlace="ngForm" (ngSubmit)="onSubmit()">
 
   <label>Name:</label>
@@ -21,12 +21,12 @@
 
   <label>Classification:</label>
   <p>
-    <select #classification>
+    <select #classification="ngForm" ngControl="classification" [(ngModel)]="place.classification">
       <option value="low">Low</option>
       <option value="average">Average</option>
       <option value="top">Top</option>
     </select>
   </p>
 
-  <input type="submit" value="Add place" [disabled]="!formPlace.form.valid"/>
+  <input type="submit" value="{{title}}" [disabled]="!formPlace.form.valid"/>
 </form>
