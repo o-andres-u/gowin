@@ -28,5 +28,10 @@
     </select>
   </p>
 
+  <label>Image:</label>
+  <p>
+    <input type="file" placeholder="Upload file..." (change)="fileChangeEvent($event)" />
+  </p>
+
   <input type="submit" value="{{title}}" [disabled]="!formPlace.form.valid"/>
 </form>

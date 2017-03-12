@@ -49,6 +49,7 @@ export class PlaceDetailComponent implements OnInit {
           }
           this.place.latitude = array[0].place_latitude;
           this.place.longitude = array[0].place_longitude;
+          this.place.image = array[0].place_image;
         }
       },
       error => {

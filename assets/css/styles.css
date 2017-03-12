@@ -76,6 +76,10 @@ header h1 {
   float: left;
 }
 
+.place-item .image img {
+  height: 105px;
+}
+
 .place-item .data {
   float: left;
   margin-left: 20px;

@@ -5,7 +5,9 @@
     <img src="../../assets/images/loader.gif" *ngIf="loading === 'show'" />
   </li>
   <li *ngFor="#place of places" class="place-item">
-    <div class="image"></div>
+    <div class="image">
+      <img src="http://localhost:4000/api/uploads/{{place.place_image}}" *ngIf="place.place_image && place.place_image !== 'null'" />
+    </div>
     <div class="data">
       <h4>{{place.place_name}}</h4>
       <p>{{place.place_score}}</p>

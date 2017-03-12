@@ -12,7 +12,8 @@ export class Place {
     public score: number,
     public classification: string,
     public latitude: string,
-    public longitude: string
+    public longitude: string,
+    public image: string
   ) { }
 
 }
