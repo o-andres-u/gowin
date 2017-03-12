@@ -13,7 +13,7 @@ export class PlaceService {
 
   getPlaces(): any {
     let req = this._http.get("http://localhost:4000/api/places");
-    return req.map(res => res.json());
+    return req.map(res => res.json()); //TODO mapear atributos de BD contra atributos del modelo
   }
 
   getPlace(uuid: string): any {
@@ -40,6 +40,11 @@ export class PlaceService {
     );
 
     let req = this._http.put("http://localhost:4000/api/places/" + uuid, params, {headers: headers});
+    return req.map(res => res.json());
+  }
+
+  deletePlace(uuid: string): any {
+    let req = this._http.delete("http://localhost:4000/api/places/" + uuid);
     return req.map(res => res.json());
   }
 

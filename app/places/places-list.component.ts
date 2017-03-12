@@ -18,6 +18,7 @@ export class PlacesListComponent implements OnInit {
   public loading: string;
   public title: string = "The best places:";
   public places: Place[];
+  public confirm: string;
   private _error: boolean;
   private _errorMessage: string;
 
@@ -49,6 +50,33 @@ export class PlacesListComponent implements OnInit {
         }
       }
     );
+  }
+
+  onDelete(uuid: string): void {
+    this._placeService.deletePlace(uuid).subscribe(
+      result => {
+        this._error = result.error;
+        if (this._error) {
+          alert("Error in server");
+        }
+        this.getPlaces();
+      },
+      error => {
+        this._errorMessage = error.message;
+        if (this._errorMessage !== null) {
+          console.log(this._errorMessage);
+          alert("Error in request");
+        }
+      }
+    );
+  }
+
+  onConfirmDeletion(uuid: string): void {
+    this.confirm = uuid;
+  }
+
+  onCancel(): void {
+    this.confirm = null;
   }
 
 }
