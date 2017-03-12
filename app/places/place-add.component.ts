@@ -25,8 +25,25 @@ export class AddPlaceComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.place = new Place("uuid", "name", 0, "low", "latitude", "longitude");
-    console.log("Loading PlaceAddComponent");
+    this.place = new Place("", "", 0, "low", "", "");
+  }
+
+  onSubmit(): void {
+    this._placeService.addPlace(this.place).subscribe(
+      response => {
+        this._error = response.error;
+        if (this._error) {
+          alert("Error in server");
+        }
+      },
+      error => {
+        this._errorMessage = error.message;
+        if (this._errorMessage !== null) {
+          alert(this._errorMessage);
+        }
+      }
+    );
+    this._router.navigate(["Home"]);
   }
 
 }
