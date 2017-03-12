@@ -16,9 +16,14 @@ export class PlaceService {
     return req.map(res => res.json()); //TODO mapear atributos de BD contra atributos del modelo
   }
 
-  getPlace(uuid: string): any {
-    let req = this._http.get("http://localhost:4000/api/places/" + uuid);
-    return req.map(res => res.json());
+  getPlace(uuid: string, random: string = null): any {
+    if (random == null) {
+      let req = this._http.get("http://localhost:4000/api/places/" + uuid);
+      return req.map(res => res.json());
+    } else {
+      let req = this._http.get("http://localhost:4000/api/places/random-place");
+      return req.map(res => res.json());
+    }
   }
 
   addPlace(place: Place): any {

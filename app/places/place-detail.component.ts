@@ -30,7 +30,9 @@ export class PlaceDetailComponent implements OnInit {
 
   getPlace(): void {
     let uuid = this._routeParams.get("uuid");
-    this._placeService.getPlace(uuid).subscribe(
+    let random = this._routeParams.get("random");
+
+    this._placeService.getPlace(uuid, random).subscribe(
       response => {
         let array = response.place;
         this.place = array[0];

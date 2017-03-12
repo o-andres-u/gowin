@@ -15,7 +15,8 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
   { path: "/", name: "Home", component: PlacesListComponent, useAsDefault: true },
   { path: "/place/:uuid", name: "Place", component: PlaceDetailComponent },
   { path: "/place-add/", name: "AddPlace", component: AddPlaceComponent },
-  { path: "/place-edit/:uuid", name: "EditPlace", component: EditPlaceComponent }
+  { path: "/place-edit/:uuid", name: "EditPlace", component: EditPlaceComponent },
+  { path: "/place-random/:random", name: "RandomPlace", component: PlaceDetailComponent }
 ])
 
 /**

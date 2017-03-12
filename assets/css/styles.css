@@ -175,3 +175,13 @@ nav ul li a:hover {
   padding: 10px;
   margin-top: -45px;
 }
+
+.image-detail {
+  width: 200px;
+  float: left;
+  margin-right: 30px;
+}
+
+.place-data {
+  float: left;
+}
