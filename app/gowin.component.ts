@@ -4,11 +4,13 @@ import {PlaceDetailComponent} from "./places/place-detail.component";
 import {AddPlaceComponent} from "./places/place-add.component";
 import {EditPlaceComponent} from "./places/place-edit.component";
 import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
+import {TestPipe} from "./pipes/test.pipe";
 
 @Component({
   selector: "gowin-app",
   templateUrl: "app/home.html",
-  directives: [PlacesListComponent, ROUTER_DIRECTIVES]
+  directives: [PlacesListComponent, ROUTER_DIRECTIVES],
+  pipes: [TestPipe]
 })
 
 @RouteConfig([
@@ -25,5 +27,6 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 export class GowinComponent {
   // Title for home.
   private title: string = "gowin - Find the best place to have fun!";
+  public fecha = new Date(1989, 11, 1);
 
 }
